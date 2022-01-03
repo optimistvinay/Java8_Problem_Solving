@@ -21,12 +21,62 @@ N is an integer within the range [1..2,147,483,647].
 public class BinaryGap {
 
     public static void main(String[] args) {
-        int i = solution(5);
+
+        System.out.println(solution(410101)); ;
+        System.out.println("***********************************");
+        System.out.println(solution(0101)); ;
+        System.out.println("***********************************");
+        System.out.println(solution(1)); ;
+        System.out.println("***********************************");
+        System.out.println(solution(5)); ;
+        System.out.println("***********************************");
+        System.out.println(solution(234)); ;
+        System.out.println("***********************************");
+        System.out.println(solution(5343)); ;
+        System.out.println("***********************************");
+        System.out.println(solution(51123)); ;
+        System.out.println("***********************************");
+        System.out.println(solution(7777)); ;
+        System.out.println("***********************************");
+        System.out.println(solution(9999)); ;
+        System.out.println("***********************************");
+        System.out.println(solution(99229)); ;
+        System.out.println("***********************************");
+        System.out.println(solution(3329)); ;
+        System.out.println("***********************************");
+        System.out.println(solution(98229)); ;
+        System.out.println("***********************************");
+
+
     }
 
 
     public static int solution(int n){
+        String binaryConvert = Integer.toBinaryString(n);
+        char[] saperatedData = binaryConvert.toCharArray();
 
-        return 0;
+        int lastlargeGap = 0;
+        boolean keepCounting = false;
+        int zeros = 0;
+
+        for (int i = 0; i < binaryConvert.length(); i++) {
+            if(binaryConvert.charAt(i) == '1'){
+                if(keepCounting){
+                    if(zeros > 0) {
+                        if(lastlargeGap < zeros)
+                            lastlargeGap = zeros;
+                        zeros = 0;
+                    }
+                }
+                else
+                    keepCounting = true;
+            }
+            else{
+                if(keepCounting){
+                    zeros++;
+                }
+            }
+        }
+        return lastlargeGap;
     }
 }
