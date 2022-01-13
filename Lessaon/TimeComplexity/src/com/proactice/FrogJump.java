@@ -31,10 +31,14 @@ public class FrogJump {
 
 
     public static void main(String[] args) {
-
+        int j = solution(10,120,30);
+        System.out.println(j);
     }
 
-    public int solution(int X, int Y, int D){
-        return 0;
+    public static int solution(int X, int Y, int D){
+        if ((Y - X) % D == 0) {
+            return (Y - X) / D;
+        }
+        return (Y - X) / D + 1;
     }
 }

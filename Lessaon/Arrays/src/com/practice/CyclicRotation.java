@@ -39,14 +39,41 @@ each element of array A is an integer within the range [−1,000..1,000].
 In your solution, focus on correctness. The performance of your solution will not be the focus of the assessment.
 */
 
+import javax.xml.bind.SchemaOutputResolver;
+
 public class CyclicRotation {
 
     public static void main(String[] args) {
+        int[] data = {3,9,1,5,7,8,2,33,44,11};
+        //int[] data = null;
+        int[] newData = solution(data,24);
+        System.out.println(newData);
+        System.out.print("{");
+        for(int i =0; i < newData.length; i++){
+            System.out.print( newData[i] + " ");
+        }
+        System.out.print("}");
 
     }
 
     public static int[] solution(int[] A, int K){
-        return null;
+        int[] newData = new int[0];
+        if(A!=null && A.length >0){
+            newData = new int[A.length];
+            if(A.length < K){
+                K = K % A.length;
+            }
+            int j=0;
+            for(int i =0; i < A.length; i++){
+                if(i+K < A.length){
+                    newData[i+K] = A[i];
+                }
+                else{
+                    newData[j++] = A[i];
+                }
+            }
+        }
+        return newData;
     }
 
 }

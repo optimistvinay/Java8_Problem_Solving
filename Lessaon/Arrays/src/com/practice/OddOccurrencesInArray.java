@@ -1,4 +1,10 @@
 package com.practice;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /*
 A non-empty array A consisting of N integers is given. The array contains an odd number of elements, and each element of the array can be paired with another element that has the same value, except for one element that is left unpaired.
 
@@ -34,11 +40,32 @@ public class OddOccurrencesInArray {
 
     public static void main(String[] args) {
 
+        int[] data = {15,11,3,1,3,1,11,7,3,3,7,11,3,1,3,1,11,7,3,3,7,11,3,1,3,1,11,7,3,3,7,11,3,1,3,1,11,7,3,3,7,11,3,1,3,1,11,7,3,3,7,11,3,1,3,1,11,7,3,3,7,11,3,1,3,1,11,7,3,3,7};
+        int result = solution(data);
+        System.out.println(result);
     }
 
     public static int solution(int[] A){
+        int result = 0;
+        if(A.length > 1000000){
+            return result;
+        }
 
 
-        return 0;
+        
+        if(A!=null && A.length >0){
+            List<Integer> list = new ArrayList<>();
+            for(int i =0; i < A.length; i++){
+                if(list.contains(A[i])){
+                    list.remove(list.indexOf(A[i]));
+                }
+                else {
+                    list.add(A[i]);
+                }
+            }
+            result = list.get(0);
+        }
+
+        return result;
     }
 }
